@@ -128,7 +128,9 @@
 }
 
 .frame-si {
-  margin-left: 96px;
+  display: flex;
+  align-items: center;
+  /*margin-left: 96px;*/
   width: 201px;
   height: 268px;
   aspect-ratio: 0.75;

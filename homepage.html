@@ -7,6 +7,11 @@
     <title>Invito al Cinema</title>
     <link rel="stylesheet" href="globals.css" />
     <link rel="stylesheet" href="style.css" />
+    <style>
+      /* animazione per spostare il bottone NO a sinistra di 88px */
+      .response-button { transition: transform 0.25s ease; }
+      .move-left { transform: translateX(-88px); }
+    </style>
   </head>
   <body>
     <main class="start">
@@ -14,7 +19,7 @@
         <!--<script src="my-script.js"></script> Chiamo le funzioni di js-->
         <script>
           var y=1; //variabile per mostrare i bottoni (1) o no (0)
-          var noClicks = 0; // conta i click sul pulsante NO*/
+          /*var noClicks = 0; // conta i click sul pulsante NO*/
           function Bott(a){
             if(a==0){
               y=0;
@@ -34,10 +39,8 @@
                   noClicks++;
                   pic= "img/FrameNo.png";
                   document.getElementById("Mex").innerHTML="Riprova";
-                 var noBtn = document.getElementById("btnNo");
-                  if (noClicks >= 1) noBtn.style.display = "none";
                   // sposta il bottone NO a sinistra
-                 /*var noBtn = document.getElementById("btnNo");
+                /* var noBtn = document.getElementById("btnNo");
                  if (noBtn) noBtn.classList.add("move-left");
                  if (noBtn) {
                     if (noClicks === 1) noBtn.classList.add("move-left");
