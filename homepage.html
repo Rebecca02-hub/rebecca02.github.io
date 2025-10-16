@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <meta name="description" content="Invito al cinema per venerdì" />
+    <title>Invito al Cinema</title>
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* animazione per spostare il bottone NO a sinistra di 88px */
+      .response-button { transition: transform 0.25s ease; }
+      .move-left { transform: translateX(-88px); }
+    </style>
+  </head>
+  <body>
+    <main class="start">
+      <section class="invitation-container">
+        <!--<script src="my-script.js"></script> Chiamo le funzioni di js-->
+        <script>
+          var y=1; //variabile per mostrare i bottoni (1) o no (0)
+          var noClicks = 0; // conta i click sul pulsante NO
+          function Bott(a){
+            if(a==0){
+              y=0;
+              document.getElementById("Bottoni").style.display="none";
+            }
+          }
+          function Frame(x){
+               let pic;
+
+               //document.getElementById("Bottoni").style.display="none";
+               if (x==0) {
+                  pic= "img/FrameSi.png";
+                  document.getElementById("Mex").innerHTML="Siiiiii";
+                  Bott(0); // nasconde i bottoni quando è "SI"
+                }
+               else if (x==1) {
+                  noClicks++;
+                  pic= "img/FrameNo.png";
+                  document.getElementById("Mex").innerHTML="Riprova";
+                  // sposta il bottone NO a sinistra
+                 var noBtn = document.getElementById("btnNo");
+                 if (noBtn) noBtn.classList.add("move-left");
+                 if (noBtn) {
+                    if (noClicks === 1) noBtn.classList.add("move-left");
+                    else if (noClicks >= 2) noBtn.style.display = "none";
+                  }
+                }
+                else if (x==2) {
+                  pic= "img/FrameNo.png";
+               }
+                document.getElementById("MyImage").src=pic;
+              }
+
+        </script>
+        <h1 class="text-wrapper">Vieni al cinema venerdì?</h1> <!--H1-->
+       
+        <div id="Bottoni" class="button-group" role="group" aria-label="Rispondi all'invito"> <!--Bottoni-->
+          <button onclick="Frame(0)" class="response-button response-button--yes" aria-label="Sì, accetto l'invito">
+            SI
+          </button> <!--Al click del bottone si invia al documento js il numero 0-->
+          <button id="btnNo" onclick="Frame(1)" type="button" class="response-button response-button--no" aria-label="No, rifiuto l'invito">
+            NO
+          </button><!--Al click del bottone si invia al documento js il numero 1-->
+        </div>
+        <p id="Mex" class="div"></p>
+        <img id="MyImage" src="img/FrameSi.png" class="frame-si"alt="Personaggio animato felice ed entusiasta" />
+    </main>
+  </body>
+</html>
